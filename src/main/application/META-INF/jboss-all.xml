@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jboss xmlns="urn:jboss:1.0">
-    <shared-session-config xmlns="urn:jboss:shared-session-config:1.0">
+    <shared-session-config xmlns="urn:jboss:shared-session-config:2.0">
         <session-config>
             <session-timeout>30</session-timeout>
             <cookie-config>
