@@ -7,5 +7,5 @@ dependencies {
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
     compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
 
-    compileOnly project(':ejb')
+    providedCompile project(':ejb')
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-	<runtime name="WildFly24(Java11)"/>
 	<fixed facet="jst.ear"/>
 	<installed facet="jst.ear" version="5.0"/>
+	<runtime name="WildFly24(Java11)"/>
 </faceted-project>

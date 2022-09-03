@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-	<runtime name="WildFly24(Java11)"/>
 	<fixed facet="jst.java"/>
 	<installed facet="jst.utility" version="1.0"/>
 	<installed facet="jst.java" version="11"/>
+	<runtime name="WildFly24(Java11)"/>
 </faceted-project>
