@@ -1,6 +1,8 @@
 ################
 #  General
 ################
+log/
+!src/**/log/
 *.log
 *.zip
 *.tar
@@ -19,9 +21,6 @@
 #  Eclipse
 ################
 bin/
-
-# STS (Spring Tool Suite)
-.springBeans
 
 ################
 #  Gradle
