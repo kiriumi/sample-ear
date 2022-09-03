@@ -1,25 +1,13 @@
 package sample.ear.ejb;
 
-import java.time.ZonedDateTime;
-
 import javax.ejb.Stateless;
+
+import org.apache.commons.lang3.StringUtils;
 
 @Stateless
 public class ExampleEjb {
 
-    private int id;
-
     private String name;
-
-    private ZonedDateTime birthday;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -29,12 +17,8 @@ public class ExampleEjb {
         this.name = name;
     }
 
-    public ZonedDateTime getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(ZonedDateTime birthday) {
-        this.birthday = birthday;
+    public void method() {
+        StringUtils.isBlank("");
     }
 
 }

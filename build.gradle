@@ -28,11 +28,16 @@ dependencies {
     earlib 'org.apache.logging.log4j:log4j-core:2.18.0'
 }
 
+
 subprojects {
+
     dependencies {
-        implementation 'org.apache.commons:commons-lang3:3.12.0'
+        // earlibで指定したライブラリを、サブプロジェクトに伝播させるため
+        compileOnly 'org.apache.commons:commons-lang3:3.12.0'
+        compileOnly 'org.apache.logging.log4j:log4j-core:2.18.0'
     }
 }
+
 
 def addDependentModuleNode(Node parentNode, String deployPath, File file) {
    groovy.util.Node dependentModule = new Node(parentNode, 'dependent-module')
