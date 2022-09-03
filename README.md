@@ -1,1 +1,1 @@
-# sample-ear-legacy
+# sample-ear
