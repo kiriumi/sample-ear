@@ -21,7 +21,7 @@ allprojects  {
 dependencies {
 
     deploy project(':ejb')
-    deploy project(path: ':web', configuration: 'archives') // warにしてearに格納するため
+    deploy project(path: ':web', configuration: 'archives') // warにしてearに格納するため「configuration: 'archives'」を付与
     deploy project(path: ':web2', configuration: 'archives')
 
     earlib 'org.apache.commons:commons-lang3:3.12.0'
