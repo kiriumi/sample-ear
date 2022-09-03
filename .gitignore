@@ -18,14 +18,19 @@
 ################
 #  Eclipse
 ################
-bin
+bin/
+
+# STS (Spring Tool Suite)
+.springBeans
 
 ################
 #  Gradle
 ################
-/.gradle/
+.gradle
 /build/
+!src/**/build/
 gradle-app.setting
 !gradle-wrapper.jar
+!gradle-wrapper.properties
 .gradletasknamecache
 gradle/wrapper/gradle-wrapper.properties
