@@ -28,6 +28,20 @@ dependencies {
     earlib 'org.apache.logging.log4j:log4j-core:2.18.0'
 }
 
+ear {
+    deploymentDescriptor {
+
+        // warのコンテキストルートを変更する
+        configurations.deploy.each {
+
+            def archiveName = it.name
+            if(archiveName.endsWith('.war')) {
+                def projectName = archiveName.substring(0, archiveName.lastIndexOf('-'))
+                webModule(archiveName, project(":${projectName}").contextRoot)
+            }
+        }
+    }
+}
 
 subprojects {
 
@@ -38,8 +52,9 @@ subprojects {
     }
 }
 
-
+// 指定のライブラリをEclipise-WTPのlibに追加する
 def addDependentModuleNode(Node parentNode, String deployPath, File file) {
+
    groovy.util.Node dependentModule = new Node(parentNode, 'dependent-module')
    dependentModule.attributes().put ('deploy-path', deployPath)
    dependentModule.attributes().put ('handle', 'module:/classpath/lib/' + file.getAbsolutePath())
@@ -56,7 +71,7 @@ eclipse.wtp.component.file {
 
      def node = wbModules.get(0)
      configurations.earlib.resolve().each {
-        addDependentModuleNode(node, ear.libDirName, it)
+        addDependentModuleNode(node, "/${ear.libDirName}", it)
      }
   }
 }
