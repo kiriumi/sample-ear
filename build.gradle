@@ -1,0 +1,57 @@
+plugins {
+    id 'ear'
+}
+
+allprojects  {
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse-wtp' // ejbのjarをEclipseからAPサーバにデプロイするため
+
+    java.toolchain.languageVersion = JavaLanguageVersion.of(11)
+    tasks.withType(JavaCompile) {options.encoding = 'UTF-8'}
+    repositories.mavenCentral()
+
+    eclipse.wtp.facet.file.withXml { xml ->
+        def node = xml.asNode();
+        if (!node.runtime) node.appendNode('runtime', [name: 'WildFly24(Java11)'])
+    }
+
+}
+
+dependencies {
+
+    deploy project(':ejb')
+    deploy project(path: ':web', configuration: 'archives') // warにしてearに格納するため
+    deploy project(path: ':web2', configuration: 'archives')
+
+    earlib 'org.apache.commons:commons-lang3:3.12.0'
+    earlib 'org.apache.logging.log4j:log4j-core:2.18.0'
+}
+
+subprojects {
+    dependencies {
+        implementation 'org.apache.commons:commons-lang3:3.12.0'
+    }
+}
+
+def addDependentModuleNode(Node parentNode, String deployPath, File file) {
+   groovy.util.Node dependentModule = new Node(parentNode, 'dependent-module')
+   dependentModule.attributes().put ('deploy-path', deployPath)
+   dependentModule.attributes().put ('handle', 'module:/classpath/lib/' + file.getAbsolutePath())
+   groovy.util.Node dependencyType = new Node(dependentModule, 'dependency-type', 'uses')
+}
+
+// earlibで指定したライブラリを、EclipseからAPサーバにデプロイするため
+eclipse.wtp.component.file {
+  withXml {
+     def wbModules = it.asNode().findAll { node -> node.name() == 'wb-module' }
+     if (wbModules.size() != 1) {
+        throw new StopActionException("wtp eclipse wb-module problem")
+     }
+
+     def node = wbModules.get(0)
+     configurations.earlib.resolve().each {
+        addDependentModuleNode(node, ear.libDirName, it)
+     }
+  }
+}

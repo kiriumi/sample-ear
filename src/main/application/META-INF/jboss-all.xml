@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss xmlns="urn:jboss:1.0">
+    <shared-session-config xmlns="urn:jboss:shared-session-config:1.0">
+        <session-config>
+            <session-timeout>30</session-timeout>
+            <cookie-config>
+                <name>JSESSIONID_EXAMPLE</name>
+                <path>/</path>
+                <http-only>true</http-only>
+            </cookie-config>
+            <tracking-mode>COOKIE</tracking-mode>
+        </session-config>
+    </shared-session-config>
+</jboss>

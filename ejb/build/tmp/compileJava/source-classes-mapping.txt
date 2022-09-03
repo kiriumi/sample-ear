@@ -1,0 +1,2 @@
+sample/ear/ejb/ExampleEjb.java
+ sample.ear.ejb.ExampleEjb
