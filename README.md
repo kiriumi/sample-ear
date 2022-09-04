@@ -15,7 +15,8 @@
 * EJBをネストしても、最初のEJBがトランザクションの開始点となる
 
 ### EJB外部
-* @Transactionalをメソッドに付与することで、そのメソッドがトランザクションの開始点となる
+* @Transactionalをメソッドに付与することで、そのメソッドがトランザクションの開始点となる</br>
+　※Servletは@Transactionの効果がないので注意（クラス、メソッドともにNG）
 * UserTransactionを使用すると、よりきめ細やかにユーザがトランザクションを制御できる（begin, commit, rollbackを自分で指定できるため）
 * @TransactionalとUserTransactionは不可（トランザクションの割込み禁止）
 
