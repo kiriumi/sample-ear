@@ -12,12 +12,12 @@
 ## トランザクションの範囲
 ### EJB内部
 * コンテナでトランザクション管理される
-* EJBをネストしても、全て最初のEJBで開始したトランザクション内で処理される
+* EJBをネストしても、最初のEJBがトランザクションの開始点となる
 
 ### EJB外部
 * @Transactionalをメソッドに付与することで、そのメソッドがトランザクションの開始点となる
-* UserTransactionをInjectすると、よりきめ細やかにユーザがトランザクションを制御できる
-* @TranzactionalとUserTransactionは不可（割込みが禁止）
+* UserTransactionを使用すると、よりきめ細やかにユーザがトランザクションを制御できる（begin, commit, rollbackを自分で指定できるため）
+* @TranzactionalとUserTransactionは不可（トランザクションの割込み禁止）
 
 ### 補足機能
 * war間でセッションを共有できるよう設定
