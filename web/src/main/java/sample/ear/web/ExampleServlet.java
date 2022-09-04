@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import sample.ear.ejb.StatefulEjb;
 import sample.ear.ejb.StatelessEjb;
@@ -24,8 +26,12 @@ public class ExampleServlet extends HttpServlet {
     @EJB
     private StatefulEjb sfEjb;
 
+    private final Logger logger = LogManager.getLogger();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+
+        logger.info("{}の開始", "画面１");
 
         // ステートレスBeanとステートフルBeanの動作確認
         System.out.println(slEjb.getName());
@@ -46,5 +52,7 @@ public class ExampleServlet extends HttpServlet {
         // Web2にセッションで情報を渡す
         final HttpSession session = req.getSession(true);
         session.setAttribute("web2.name", slEjb.getName());
+
+        logger.info("{}の終了", "画面１");
     }
 }

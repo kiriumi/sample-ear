@@ -12,11 +12,15 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Stateless
 public class StatelessEjb {
 
     private DataSource dataSource;
+
+    private final Logger logger = LogManager.getLogger();
 
     private String name;
 
@@ -54,6 +58,8 @@ public class StatelessEjb {
 
         final Context ctx = new InitialContext();
         this.dataSource = (DataSource) ctx.lookup("java:/jdbc/PostgresDS");
+
+        logger.info("{}を取得しました。{}", "データソース", "java:/jdbc/PostgresDS");
     }
 
     @PreDestroy

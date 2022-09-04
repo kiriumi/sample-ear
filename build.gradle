@@ -25,7 +25,7 @@ dependencies {
     deploy project(path: ':web2', configuration: 'archives')
 
     earlib 'org.apache.commons:commons-lang3:3.12.0'
-    earlib 'org.apache.logging.log4j:log4j-core:2.18.0'
+    earlib 'org.apache.logging.log4j:log4j-core:2.14.0'
 }
 
 ear {
@@ -48,7 +48,7 @@ subprojects {
     dependencies {
         // earlibで指定したライブラリを、サブプロジェクトに伝播させるため
         compileOnly 'org.apache.commons:commons-lang3:3.12.0'
-        compileOnly 'org.apache.logging.log4j:log4j-core:2.18.0'
+        compileOnly 'org.apache.logging.log4j:log4j-api:2.14.0'
     }
 }
 
