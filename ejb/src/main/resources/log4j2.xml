@@ -4,8 +4,7 @@
 <Configuration status="OFF">
 
     <Properties>
-        <Property name="logPath">C:/Temp/ejb/log</Property>
-
+        <Property name="logPath">C:/Temp/log/ejb</Property>
         <Property name="sysPattern">%d{yyyy/MM/dd HH:mm:ss.SSS} [%t] %-5p %C %M %m%n%ex</Property>
     </Properties>
 
@@ -29,10 +28,6 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="javax.enterprise.resource.webcontainer.jsf" level="INFO" additivity="false">
-            <AppenderRef ref="console" />
-            <AppenderRef ref="file" />
-        </Logger>
 
         <!-- EJB -->
         <Logger name="sample.ear.ejb" level="DEBUG" additivity="false">

@@ -4,9 +4,8 @@
 <Configuration status="OFF">
 
     <Properties>
-        <Property name="logPath">C:/Temp/web/log</Property>
-
-        <Property name="sysPattern">%d{yyyy/MM/dd HH:mm:ss.SSS} [%t] %-5p %C %M %m%n%ex</Property>
+        <Property name="logPath">C:/Temp/log/web</Property>
+        <Property name="sysPattern">%d{yyyy/MM/dd HH:mm:ss.SSS} %-5p (%t) %C %M %m%n%ex</Property>
     </Properties>
 
     <Appenders>
@@ -29,10 +28,6 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="javax.enterprise.resource.webcontainer.jsf" level="INFO" additivity="false">
-            <AppenderRef ref="console" />
-            <AppenderRef ref="file" />
-        </Logger>
 
         <!-- WEB -->
         <Logger name="sample.ear.web" level="DEBUG" additivity="false">
