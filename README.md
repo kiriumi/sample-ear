@@ -1,9 +1,19 @@
 # 一般的なEarの構成に則したサンプルプロジェクト
 
+## ステートレスBeanとステートフルBeanの違い
+### ステートレスBean
+* インスタンスを使いまわす
+* ∴インスタンスに状態を持たせると危険
+
+### ステートフルBean
+* EJBクライアント（※）ごとにインスタンスが異なる
+* ∴インスタンスに状態を持たせれる
+
 ### 補足機能
 * war間でセッションを共有できるよう設定
 
 # 参考
+[JavaEEの使い方](https://qiita.com/opengl-8080/items/0dd004ea1d04cb50e39d)
 [EJB 2.1からEJB 3.0への移行](https://codezine.jp/article/detail/440)</br>
 [gradle-java-ear](https://github.com/hammingweight/gradle-java-ear)</br>
 [Eclipse-wtp ear with 3rd party libs](https://discuss.gradle.org/t/eclipse-wtp-ear-with-3rd-party-libs/20673)</br>
