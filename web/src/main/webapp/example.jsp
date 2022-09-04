@@ -9,5 +9,10 @@
 <body>
 ハロー
 <%=request.getAttribute("name") %>
+
+<form method="post" action="example-tx">
+    <input type="submit" value="送信">
+</form>
+
 </body>
 </html>

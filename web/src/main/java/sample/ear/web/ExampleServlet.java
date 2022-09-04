@@ -27,6 +27,7 @@ public class ExampleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
+        // ステートレスBeanとステートフルBeanの動作確認
         System.out.println(slEjb.getName());
         System.out.println(sfEjb.getName());
 
@@ -38,6 +39,7 @@ public class ExampleServlet extends HttpServlet {
         System.out.println(slEjb.getName());
         System.out.println(sfEjb.getName());
 
+        // JSPの表示
         req.setAttribute("name", slEjb.getName());
         req.getRequestDispatcher("example.jsp").forward(req, res);
 
