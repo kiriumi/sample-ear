@@ -8,22 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
 
-import sample.ear.ejb.StatelessEjb;
+import sample.ear.ejb.ExampleEjb;
 
 @WebServlet("/example-tx")
-@Transactional
 public class ExampleTxServlet extends HttpServlet {
 
     @EJB
-    private StatelessEjb slEjb;
+    private ExampleEjb ejb;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
         try {
-            slEjb.method();
+            final String id = req.getParameter("id");
+            final String name = req.getParameter("name");
+
+            ejb.method(Integer.parseInt(id), name);
 
         } catch (final Exception e) {
             e.printStackTrace();

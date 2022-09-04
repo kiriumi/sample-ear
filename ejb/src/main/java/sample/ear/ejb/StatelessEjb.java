@@ -1,26 +1,13 @@
 package sample.ear.ejb;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Stateless
 public class StatelessEjb {
-
-    private DataSource dataSource;
-
-    private final Logger logger = LogManager.getLogger();
 
     private String name;
 
@@ -32,34 +19,9 @@ public class StatelessEjb {
         this.name = StringUtils.stripToEmpty(name);
     }
 
-    public void method() throws Exception {
-
-        final String sql = "INSERT INTO public.user_info ( id, password, email) VALUES (?,?,?)";
-
-        try (Connection con = dataSource.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setString(1, "hoge");
-            ps.setString(2, "pass");
-            ps.setString(3, "hoge@com");
-            ps.executeUpdate();
-
-        } catch (final Exception e) {
-            e.printStackTrace();
-            throw e;
-        }
-
-    }
-
     @PostConstruct
-    public void construct() throws NamingException {
-
+    public void construct() {
         System.out.println("PreConstruct@Stateless");
-
-        final Context ctx = new InitialContext();
-        this.dataSource = (DataSource) ctx.lookup("java:/jdbc/PostgresDS");
-
-        logger.info("{}を取得しました。{}", "データソース", "java:/jdbc/PostgresDS");
     }
 
     @PreDestroy

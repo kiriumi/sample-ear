@@ -11,7 +11,9 @@
 <%=request.getAttribute("name") %>
 
 <form method="post" action="example-tx">
-    <input type="submit" value="送信">
+    ID：<input type="text" name="id" /><br/>
+    名前：<input type="text" name="name" /><br/>
+    <input type="submit" value="送信" />
 </form>
 
 </body>
