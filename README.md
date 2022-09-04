@@ -17,7 +17,7 @@
 ### EJB外部
 * @Transactionalをメソッドに付与することで、そのメソッドがトランザクションの開始点となる
 * UserTransactionを使用すると、よりきめ細やかにユーザがトランザクションを制御できる（begin, commit, rollbackを自分で指定できるため）
-* @TranzactionalとUserTransactionは不可（トランザクションの割込み禁止）
+* @TransactionalとUserTransactionは不可（トランザクションの割込み禁止）
 
 ### 補足機能
 * war間でセッションを共有できるよう設定
